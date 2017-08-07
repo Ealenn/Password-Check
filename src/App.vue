@@ -1,16 +1,22 @@
 <template>
-  <div id="app">
+  <div id="app" class="ui container">
     <password></password>
+
+    <div class="ui section divider"></div>
+
+    <stats></stats>
   </div>
 </template>
 
 <script>
 import Password from './components/Password'
+import Stats from './components/Stats'
 
 export default {
   name: 'app',
   components: {
-    Password
+    Password,
+    Stats
   }
 }
 </script>
