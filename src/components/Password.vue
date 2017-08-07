@@ -2,8 +2,8 @@
   <div class="password">
     <div class="ui left corner labeled input">
 
-      <input v-if="showPassword" type="text" v-model="password" placeholder="Mot de passe">
-      <input v-if="!showPassword" type="password" v-model="password" placeholder="Mot de passe">
+      <input v-if="showPassword" type="text" :value="password" @input="updatePassword" placeholder="Mot de passe">
+      <input v-if="!showPassword" type="password" :value="password" @input="updatePassword" placeholder="Mot de passe">
 
       <div class="ui left corner label">
         <i class="asterisk icon"></i>
@@ -22,13 +22,20 @@ export default {
   name: 'password',
   data () {
     return {
-      password: '',
       showPassword: false
     }
   },
   computed: {
+    password: function () {
+      return this.$store.state.password
+    },
     inputButtonIcon: function () {
       return this.showPassword ? 'hide' : 'unhide'
+    }
+  },
+  methods: {
+    updatePassword (e) {
+      this.$store.commit('EDIT_PASSWORD', e.target.value)
     }
   }
 }

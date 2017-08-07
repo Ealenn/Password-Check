@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "semantic-ui-vue2": "^2.4.2",
-    "vue": "^2.3.3"
+    "vue": "^2.3.3",
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
