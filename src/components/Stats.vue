@@ -7,16 +7,35 @@
         <tr>
           <th>Titre</th>
           <th>Nombre</th>
+          <th>Recommandations</th>
         </tr>
       </thead>
       <tbody>
+      <tr>
+        <td>Nombre de caractères</td>
+        <td>{{Stats.total()}}</td>
+        <td v-if="Stats.total() < 12" class="negative"><i class="icon close"></i> 12</td>
+        <td v-if="Stats.total() >= 12" class="positive"><i class="icon checkmark"></i> 12</td>
+      </tr>
+      <tr>
+        <td>Lettres majuscules</td>
+        <td>{{Stats.uppercase()}}</td>
+        <td></td>
+      </tr>
         <tr>
-          <td>[A-Z]</td>
-          <td>{{Stats.uppercase()}}</td>
+          <td>Lettres minuscules</td>
+          <td>{{Stats.lowercase()}}</td>
+          <td></td>
         </tr>
         <tr>
-          <td>[a-z]</td>
-          <td>{{Stats.lowercase()}}</td>
+          <td>Chiffre</td>
+          <td>{{Stats.number()}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Caractères spéciaux</td>
+          <td>{{Stats.specialChar()}}</td>
+          <td></td>
         </tr>
       </tbody>
     </table>
