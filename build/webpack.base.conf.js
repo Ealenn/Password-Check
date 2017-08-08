@@ -22,7 +22,9 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('src'),
+      // libs
+      'semantic': path.resolve(__dirname, '../node_modules/semantic-ui-css/semantic.min.js')
     }
   },
   module: {

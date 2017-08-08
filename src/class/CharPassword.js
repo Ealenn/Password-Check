@@ -42,4 +42,27 @@ export default class CharPassword {
 
     return 0
   }
+
+  repeat (withStats = true) {
+    // Count
+    let counts = {}
+    this.password.toLowerCase().split('').forEach(function (x) { counts[x] = (counts[x] || 0) + 1 })
+
+    // Max
+    let max = 0
+    let unique = 0
+    Object.keys(counts).forEach(
+      function (key) {
+        max = max < counts[key] ? counts[key] : max
+        unique++
+      }
+    )
+
+    if (withStats) {
+      counts.max = max
+      counts.unique = unique
+    }
+
+    return counts
+  }
 }
