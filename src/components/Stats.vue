@@ -16,13 +16,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in Stats.repeat(false)" v-if="item > 1">
+            <tr v-for="(item, index) in repeat.repeat" v-if="item > 1">
               <td>{{index}}</td>
               <td>{{item}}</td>
               <td>
                 <div class="ui small progress">
-                  <div class="bar" :style="'width:' + Math.floor((item * 100) / Stats.total()) +'%'"></div>
-                  <div class="label">{{ Math.floor((item * 100) / Stats.total()) }}%</div>
+                  <div class="bar" :style="'width:' + Math.floor((item * 100) / characters.total) +'%'"></div>
+                  <div class="label">{{ Math.floor((item * 100) / characters.total) }}%</div>
                 </div>
               </td>
             </tr>
@@ -52,15 +52,13 @@
       <tbody>
       <tr>
         <td>Nombre de caractères</td>
-        <td>{{Stats.total()}}</td>
-        <td v-if="Stats.total() < 12" class="negative"><i class="icon close"></i> 12</td>
-        <td v-if="Stats.total() >= 12" class="positive"><i class="icon checkmark"></i> 12</td>
+        <td>{{characters.total}}</td>
+        <td :class="getClass(characters.check)"><i :class="getIcon(characters.check)"></i> {{characters.recommend}}</td>
       </tr>
       <tr>
         <td>Nombre de caractères unique</td>
-        <td>{{Stats.repeat().unique}}</td>
-        <td v-if="Stats.repeat().unique < 12" class="negative"><i class="icon close"></i> 12</td>
-        <td v-if="Stats.repeat().unique >= 12" class="positive"><i class="icon checkmark"></i> 12</td>
+        <td>{{repeat.unique}}</td>
+        <td :class="getClass(repeat.unique_check)"><i :class="getIcon(repeat.unique_check)"></i> {{repeat.unique_recommend}}</td>
       </tr>
       <tr>
         <td>
@@ -69,41 +67,33 @@
             (<i class="ui plus square outline icon"></i>Plus d'informations)
           </a>
         </td>
-        <td>
-          {{Stats.repeat().max}}
-        </td>
-        <td v-if="Stats.uppercase() >= 2" class="positive"><i class="icon checkmark"></i> < 2</td>
-        <td v-if="Stats.uppercase() < 2" class="negative"><i class="icon close"></i> < 2</td>
+        <td>{{repeat.max}}</td>
+        <td :class="getClass(repeat.repeat_check)"><i :class="getIcon(repeat.repeat_check)"></i> {{repeat.repeat_recommend}}</td>
       </tr>
       <tr>
         <td>Lettres majuscules</td>
-        <td>{{Stats.uppercase()}}</td>
-        <td v-if="Stats.uppercase() >= 2" class="positive"><i class="icon checkmark"></i> 2</td>
-        <td v-if="Stats.uppercase() < 2" class="negative"><i class="icon close"></i> 2</td>
+        <td>{{uppercase.uppercase}}</td>
+        <td :class="getClass(uppercase.check)"><i :class="getIcon(uppercase.check)"></i> {{uppercase.recommend}}</td>
       </tr>
         <tr>
           <td>Lettres minuscules</td>
-          <td>{{Stats.lowercase()}}</td>
-          <td v-if="Stats.lowercase() >= 2" class="positive"><i class="icon checkmark"></i> 2</td>
-          <td v-if="Stats.lowercase() < 2" class="negative"><i class="icon close"></i> 2</td>
+          <td>{{lowercase.lowercase}}</td>
+          <td :class="getClass(lowercase.check)"><i :class="getIcon(lowercase.check)"></i> {{lowercase.recommend}}</td>
         </tr>
         <tr>
           <td>Chiffre</td>
-          <td>{{Stats.number()}}</td>
-          <td v-if="Stats.number() >= 2" class="positive"><i class="icon checkmark"></i> 2</td>
-          <td v-if="Stats.number() < 2" class="negative"><i class="icon close"></i> 2</td>
+          <td>{{number.number}}</td>
+          <td :class="getClass(number.check)"><i :class="getIcon(number.check)"></i> {{number.recommend}}</td>
         </tr>
         <tr>
           <td>Caractères spéciaux</td>
-          <td>{{Stats.specialChar()}}</td>
-          <td v-if="Stats.specialChar() >= 2" class="positive"><i class="icon checkmark"></i> 2</td>
-          <td v-if="Stats.specialChar() < 2" class="negative"><i class="icon close"></i> 2</td>
+          <td>{{specialchar.specialchar}}</td>
+          <td :class="getClass(specialchar.check)"><i :class="getIcon(specialchar.check)"></i> {{specialchar.recommend}}</td>
         </tr>
         <tr>
           <td>Mots clés dangereux</td>
-          <td>{{Use.keyword(this.password).length}}</td>
-          <td v-if="Use.keyword(this.password).length == 0" class="positive"><i class="icon checkmark"></i> 0</td>
-          <td v-if="Use.keyword(this.password).length > 0" class="negative"><i class="icon close"></i> 0</td>
+          <td>{{keyword.keyword.length}}</td>
+          <td :class="getClass(keyword.check)"><i :class="getIcon(keyword.check)"></i> {{keyword.recommend}}</td>
         </tr>
       </tbody>
     </table>
@@ -114,6 +104,12 @@
 
 <script>
 import YaModalFunc from 'vue-ya-semantic-modal'
+
+const ICON_POSITIVE = 'icon checkmark'
+const ICON_NEGATIVE = 'icon close'
+
+const CLASS_POSITIVE = 'positive'
+const CLASS_NEGATIVE = 'negative'
 
 export default {
   name: 'stats',
@@ -126,19 +122,89 @@ export default {
     }
   },
   computed: {
-    password: function () {
-      return this.$store.state.password
+    characters: function () {
+      var total = this.$store.state.Stats.total()
+
+      return {
+        total,
+        recommend: 12,
+        check: total >= 12
+      }
     },
-    Stats: function () {
-      return this.$store.state.Stats
+    repeat: function () {
+      var repeat = this.$store.state.Stats.repeat()
+      var unique = repeat.unique
+      var max = repeat.max
+
+      delete repeat.unique
+      delete repeat.max
+
+      return {
+        repeat,
+        unique,
+        max,
+        repeat_recommend: 0,
+        repeat_tolerance: 2,
+        repeat_check: max <= 2,
+        unique_recommend: 12,
+        unique_check: unique >= 12
+      }
     },
-    Use: function () {
-      return this.$store.state.Use
+    number: function () {
+      var number = this.$store.state.Stats.number()
+
+      return {
+        number,
+        recommend: 2,
+        check: number >= 2
+      }
+    },
+    uppercase: function () {
+      var uppercase = this.$store.state.Stats.uppercase()
+
+      return {
+        uppercase,
+        recommend: 2,
+        check: uppercase >= 2
+      }
+    },
+    lowercase: function () {
+      var lowercase = this.$store.state.Stats.lowercase()
+
+      return {
+        lowercase,
+        recommend: 2,
+        check: lowercase >= 2
+      }
+    },
+    specialchar: function () {
+      var specialchar = this.$store.state.Stats.specialChar()
+
+      return {
+        specialchar,
+        recommend: 2,
+        check: specialchar >= 2
+      }
+    },
+    keyword: function () {
+      var keyword = this.$store.state.Use.keyword(this.$store.state.password)
+
+      return {
+        keyword,
+        recommend: 0,
+        check: keyword <= 0
+      }
     }
   },
   methods: {
     showModal: function () {
       this.activeModal = true
+    },
+    getClass: function (check) {
+      return check ? CLASS_POSITIVE : CLASS_NEGATIVE
+    },
+    getIcon: function (check) {
+      return check ? ICON_POSITIVE : ICON_NEGATIVE
     }
   }
 }
