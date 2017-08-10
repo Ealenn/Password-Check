@@ -1,6 +1,6 @@
 <template>
 
-  <div class="stats">
+  <div class="stats column">
 
     <!-- Repeat Modal -->
     <ya-modal verticla flip inverted v-model="activeModal">

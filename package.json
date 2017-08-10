@@ -11,6 +11,8 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "humanize": "^0.0.9",
+    "moment": "^2.18.1",
     "vue": "^2.3.3",
     "vue-ya-semantic-modal": "^0.0.3",
     "vuex": "^2.3.1"

@@ -1,5 +1,5 @@
 <template>
-  <div class="password">
+  <div class="password column">
     <div class="ui left corner labeled input">
 
       <input v-if="showPassword" type="text" :value="password" @input="updatePassword" placeholder="Mot de passe">
@@ -43,5 +43,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.password{
+  text-align: center;
+}
 </style>
