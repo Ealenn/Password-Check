@@ -88,7 +88,6 @@ moment.locale('fr')
 export default {
   name: 'times',
   data: function () {
-    console.log(humanize)
     return {
       momentjs: moment,
       humanizejs: humanize

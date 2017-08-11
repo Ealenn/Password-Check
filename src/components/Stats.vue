@@ -35,12 +35,15 @@
       </div>
     </ya-modal>
 
-    <!-- Table -->
-    <div class="ui small progress">
+    <!-- Progress -->
+    <div class="ui small progress" v-if="characters.total > 0">
       <div class="bar" :style="'background-color:' + score.color + ';width:' + score.prc +'%'"></div>
       <div class="label">{{ score.total }} / {{score.max}}<br/>{{score.prc}}%</div>
     </div>
+
     <br />
+
+    <!-- Table -->
     <table class="ui striped table">
       <thead>
         <tr>

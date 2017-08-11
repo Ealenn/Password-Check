@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="ui main container">
     <password></password>
+    <time-to></time-to>
     <div class="ui section divider"></div>
     <stats></stats>
     <div class="ui section divider"></div>
@@ -10,6 +11,7 @@
 
 <script>
 import Password from './components/Password'
+import TimeTo from './components/TimeTo'
 import Stats from './components/Stats'
 import Times from './components/Times'
 
@@ -17,6 +19,7 @@ export default {
   name: 'app',
   components: {
     Password,
+    TimeTo,
     Stats,
     Times
   }
