@@ -4,15 +4,15 @@
 
     <!-- Repeat Modal -->
     <ya-modal verticla flip inverted v-model="activeModal">
-      <div class="ui header">Nombre de répétitions</div>
+      <div class="ui header">{{ $t('stats.modal.title') }}</div>
       <div class="content">
 
         <table class="ui striped table">
           <thead>
             <tr>
-              <th>Caractère</th>
-              <th>Répétition</th>
-              <th>Évaluation des risques</th>
+              <th>{{ $t('stats.modal.row.character') }}</th>
+              <th>{{ $t('stats.modal.row.repeat') }}</th>
+              <th>{{ $t('stats.modal.row.risk') }}</th>
             </tr>
           </thead>
           <tbody>
@@ -31,7 +31,7 @@
 
       </div>
       <div class="actions">
-        <div class="ui green ok inverted button" @click="activeModal=false">OK</div>
+        <div class="ui green ok inverted button" @click="activeModal=false">{{ $t('stats.modal.close') }}</div>
       </div>
     </ya-modal>
 

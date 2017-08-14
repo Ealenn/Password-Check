@@ -1,3 +1,4 @@
+import Config from './config'
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -8,8 +9,17 @@ import TimePassword from './class/TimePassword'
 
 Vue.use(Vuex)
 
+// Local
+let StoreLocal = Config.defaultLocal
+Config.localAvailable.forEach(function (Local) {
+  if (Local.indexOf(Config.local) !== -1) {
+    StoreLocal = Local
+  }
+}, this)
+
 // Initial state object
 const state = {
+  local: StoreLocal,
   password: '',
   TimeTo: new TimeTo(),
   Stats: new CharPassword(''),

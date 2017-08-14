@@ -2,8 +2,8 @@
   <div class="password column">
     <div class="ui left corner labeled input">
 
-      <input v-if="showPassword" type="text" :value="password" @input="updatePassword" placeholder="Mot de passe">
-      <input v-if="!showPassword" type="password" :value="password" @input="updatePassword" placeholder="Mot de passe">
+      <input v-if="showPassword" type="text" :value="password" @input="updatePassword" :placeholder="$t('password.input.placeholder')">
+      <input v-if="!showPassword" type="password" :value="password" @input="updatePassword" :placeholder="$t('password.input.placeholder')">
 
       <div class="ui left corner label">
         <i class="asterisk icon"></i>
@@ -41,7 +41,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .password{
   text-align: center;

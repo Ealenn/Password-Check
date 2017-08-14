@@ -4586,6 +4586,10 @@ vue@^2.3.3:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.4.2.tgz#a9855261f191c978cc0dc1150531b8d08149b58c"
 
+vuex-i18n@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/vuex-i18n/-/vuex-i18n-1.6.0.tgz#738d06068361d85451e5c467d8b2642aa7bf04eb"
+
 vuex@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-2.3.1.tgz#cde8e997c1f9957719bc7dea154f9aa691d981a6"
