@@ -47,35 +47,35 @@
     <table class="ui striped table">
       <thead>
         <tr>
-          <th>Titre</th>
-          <th>Nombre</th>
+          <th>{{ $t('stats.array.title') }}</th>
+          <th>{{ $t('stats.array.number') }}</th>
           <th>
-            Recommandations
-            <a href="http://www.ssi.gouv.fr/" target="_blank" class="ui icon" data-tooltip="ANSSI : Agence nationale de la sécurité des systèmes d'information" data-position="top left">
+            {{ $t('stats.array.recommendations') }}
+            <a href="http://www.ssi.gouv.fr/" target="_blank" class="ui icon" data-tooltip="http://www.ssi.gouv.fr" data-position="top left">
               <i class="ui help circle icon"></i>
             </a>
           </th>
-          <th>Score</th>
+          <th>{{ $t('stats.array.score') }}</th>
         </tr>
       </thead>
       <tbody>
       <tr :class="getClass(characters.check)">
-        <td>Nombre de caractères</td>
+        <td>{{ $t('stats.array.character') }}</td>
         <td>{{characters.total}}</td>
         <td><i :class="getIcon(characters.check)"></i> {{characters.recommend}}</td>
         <td>{{characters.score}}/{{characters.score_max}}</td>
       </tr>
       <tr :class="getClass(repeat.unique_check)">
-        <td>Nombre de caractères unique</td>
+        <td>{{ $t('stats.array.unique') }}</td>
         <td>{{repeat.unique}}</td>
         <td><i :class="getIcon(repeat.unique_check)"></i> {{repeat.unique_recommend}}</td>
         <td>{{repeat.unique_score}}/{{repeat.unique_score_max}}</td>
       </tr>
       <tr :class="getClass(repeat.repeat_check)">
         <td>
-          Nombre de répétitions
-          <a href="#" @click.prevent="showModal()" class="ui icon" data-tooltip="Affiche un tableau explicatif afin d'évaluer les risques" data-position="top left">
-            (<i class="ui plus square outline icon"></i>Plus d'informations)
+          {{ $t('stats.array.repeat') }}
+          <a href="#" @click.prevent="showModal()" class="ui icon">
+             <i class="ui plus square outline icon"></i>{{ $t('stats.array.more') }}
           </a>
         </td>
         <td>{{repeat.max}}</td>
@@ -83,31 +83,31 @@
         <td>{{repeat.repeat_score}}/{{repeat.repeat_score_max}}</td>
       </tr>
       <tr :class="getClass(uppercase.check)">
-        <td>Lettres majuscules</td>
+        <td>{{ $t('stats.array.upper') }}</td>
         <td>{{uppercase.uppercase}}</td>
         <td><i :class="getIcon(uppercase.check)"></i> {{uppercase.recommend}}</td>
         <td>{{uppercase.score}}/{{uppercase.score_max}}</td>
       </tr>
         <tr :class="getClass(lowercase.check)">
-          <td>Lettres minuscules</td>
+          <td>{{ $t('stats.array.lower') }}</td>
           <td>{{lowercase.lowercase}}</td>
           <td><i :class="getIcon(lowercase.check)"></i> {{lowercase.recommend}}</td>
           <td>{{lowercase.score}}/{{lowercase.score_max}}</td>
         </tr>
         <tr :class="getClass(number.check)">
-          <td>Chiffre</td>
+          <td>{{ $t('stats.array.digit') }}</td>
           <td>{{number.number}}</td>
           <td><i :class="getIcon(number.check)"></i> {{number.recommend}}</td>
           <td>{{number.score}}/{{number.score_max}}</td>
         </tr>
         <tr :class="getClass(specialchar.check)">
-          <td>Caractères spéciaux</td>
+          <td>{{ $t('stats.array.special') }}</td>
           <td>{{specialchar.specialchar}}</td>
           <td><i :class="getIcon(specialchar.check)"></i> {{specialchar.recommend}}</td>
           <td>{{specialchar.score}}/{{specialchar.score_max}}</td>
         </tr>
         <tr :class="getClass(keyword.check)">
-          <td>Mots clés dangereux</td>
+          <td>{{ $t('stats.array.dangerous') }}</td>
           <td>{{keyword.keyword.length}}</td>
           <td><i :class="getIcon(keyword.check)"></i> {{keyword.recommend}}</td>
           <td>{{keyword.score}}/{{keyword.score_max}}</td>

@@ -5,31 +5,33 @@
     <h2 class="ui header">
       <i class="plug icon"></i>
       <div class="content">
-        Calculez en combien de temps peut être cracké votre mot de passe via bruteforce
-        <div class="sub header">L'attaque par force brute est une méthode utilisée en cryptanalyse pour trouver un mot de passe ou une clé. Il s'agit de tester, une à une, toutes les combinaisons possibles. <a href="https://fr.wikipedia.org/wiki/Attaque_par_force_brute" target="_blank">Wikipedia</a></div>
+        {{ $t('time.title') }}
+        <div class="sub header">
+          {{ $t('time.wikipedia') }}
+          <a href="https://fr.wikipedia.org/wiki/Attaque_par_force_brute" target="_blank">Wikipedia</a></div>
       </div>
     </h2>
 
     <!-- Message -->
     <div class="ui info message" v-if="Times.stats().possibility == 0">
       <div class="header">
-        Vous devez saisir un mot de passe pour calculer :
+        {{ $t('time.emptypassword.title') }}
       </div>
       <ul class="list">
-        <li>Les possibilités par caractères</li>
-        <li>Les opérations maximum avant de trouver le mot de passe</li>
-        <li>Le temps de calcule</li>
+        <li>{{ $t('time.emptypassword.line1') }}</li>
+        <li>{{ $t('time.emptypassword.line2') }}</li>
+        <li>{{ $t('time.emptypassword.line3') }}</li>
       </ul>
     </div>
 
     <div class="ui negative message" v-if="Times.stats().possibility > 0 && keyword.length > 0">
       <div class="header">
-        Attention : Votre mot de passe est vulnérable
+        {{ $t('time.warning.title') }}
       </div>
       <ul class="list">
-        <li>Votre mot de passe comporte des mots clefs disponible dans des dictionnaire de mot de passe.</li>
-        <li>Ne prenez pas en compte ces temps de calcule.</li>
-        <li>Il est donc beaucoup plus rapide à découvrir.</li>
+        <li>{{ $t('time.warning.line1') }}</li>
+        <li>{{ $t('time.warning.line2') }}</li>
+        <li>{{ $t('time.warning.line3') }}</li>
       </ul>
     </div>
 
@@ -38,14 +40,14 @@
       <div class="item">
         <i class="right triangle icon"></i>
         <div class="content">
-          <div class="header">{{humanizejs.numberFormat(Times.stats().possibility,0,',',' ')}} Possibilités par caractères</div>
+          <div class="header">{{humanizejs.numberFormat(Times.stats().possibility,0,',',' ')}} {{ $t('time.bycharacters') }}</div>
           <div class="description">{{Times.stats().possibility_ascii}}</div>
         </div>
       </div>
       <div class="item">
         <i class="right triangle icon"></i>
         <div class="content">
-          <div class="header">Opérations maximum pour trouver le mot de passe</div>
+          <div class="header">{{ $t('time.maximumoperations') }}</div>
           <div class="description">{{humanizejs.numberFormat(Times.stats().operations,0,',',' ')}}</div>
         </div>
       </div>
@@ -55,13 +57,13 @@
     <table class="ui striped table" v-if="Times.stats().possibility > 0">
       <thead>
         <tr>
-          <th>Titre</th>
-          <th>Date</th>
-          <th>Fréquence d'horloge</th>
-          <th>Parallélisme</th>
-          <th>Opérations /s</th>
-          <th>Temps</th>
-          <th>Temps optimisé</th>
+          <th>{{ $t('time.array.title') }}</th>
+          <th>{{ $t('time.array.date') }}</th>
+          <th>{{ $t('time.array.clock') }}</th>
+          <th>{{ $t('time.array.parallelism') }}</th>
+          <th>{{ $t('time.array.operations') }}</th>
+          <th>{{ $t('time.array.time') }}</th>
+          <th>{{ $t('time.array.optimizedtime') }}</th>
         </tr>
       </thead>
       <tbody>
