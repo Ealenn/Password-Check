@@ -7,6 +7,8 @@ import CharPassword from './class/CharPassword'
 import UsePassword from './class/UsePassword'
 import TimePassword from './class/TimePassword'
 
+import moment from 'moment'
+
 Vue.use(Vuex)
 
 // Local
@@ -33,6 +35,11 @@ const mutations = {
     state.password = password
     state.Stats = new CharPassword(state.password)
     state.Times = new TimePassword(state.Stats)
+  },
+  EDIT_LOCAL (state, local) {
+    Vue.i18n.set(local)
+    moment.locale(local)
+    state.local = local
   }
 }
 
