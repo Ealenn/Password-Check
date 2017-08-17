@@ -55,13 +55,22 @@ export default class TimePassword {
         time: this.getDate(this.operations, 4, 3)
       },
       {
-        title: 'Serveur Dédié',
+        title: 'Web Server',
         date: '2017',
         cpu: 3.5,
         unit: 3.5 * (10 ** 6),
         para: 8,
         time_optimyze: this.getDate(this.operations_real, 3.5, 8),
         time: this.getDate(this.operations, 3.5, 8)
+      },
+      {
+        title: 'Tianhe-2',
+        date: '2013',
+        cpu: 1.3,
+        unit: 1.3 * (10 ** 6),
+        para: 3120000,
+        time_optimyze: this.getDate(this.operations_real, 1.3, 3120000),
+        time: this.getDate(this.operations, 1.3, 3120000)
       }
     ]
   }

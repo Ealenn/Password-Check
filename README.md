@@ -21,14 +21,14 @@
   - [x] Accurate time for brute force
   - [x] Possibilities by characters
   - [x] Maximum operations to find the password
-  - [ ] Calculate with
+  - [x] Calculate with
     - [x] Mac Book Pro 2017
     - [x] Dedicated server
-    - [ ] Tianhe-2
+    - [x] Tianhe-2
     
 ## Language
 - [x] Français
-- [ ] English
+- [x] English
 
 ## Build Setup
 
