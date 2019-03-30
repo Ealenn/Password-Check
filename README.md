@@ -3,6 +3,12 @@
 
 > Password Strength Checker
 
+<p align="center">
+  <a href="https://password-check.herokuapp.com">
+    <img src="https://img.shields.io/badge/Open-Now-blue.svg?style=for-the-badge" alt="Open now"/>
+  </a>
+</p>
+
 ![](screenshot.png)
 
 ## Features
