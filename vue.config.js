@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: 'https://ealenn.github.io/Password-Check/',
+  publicPath: process.env.BASE_URL,
   pluginOptions: {
     quasar: {
       importStrategy: 'kebab',
