@@ -53,28 +53,64 @@ export default class Operation {
   Comparator () {
     return [
       {
+        Title: 'Raspberry Pi',
+        Date: '2019',
+        Cpu: 2,
+        Unit: (2 * (10 ** 6)),
+        Para: 2,
+        TimeOptimyze: this.GetDate(this.OperationOptim, 2, 2),
+        Time: this.GetDate(this.Operation, 2, 2)
+      },
+      {
         Title: 'Mac-Book-Pro',
         Date: '2017',
         Cpu: 4,
-        Unit: 4 * (10 ** 6),
+        Unit: (4 * (10 ** 6)),
         Para: 4,
-        TimeOptimyze: this.GetDate(this.OperationOptim, 4, 3),
-        Time: this.GetDate(this.Operation, 4, 3)
+        TimeOptimyze: this.GetDate(this.OperationOptim, 4, 4),
+        Time: this.GetDate(this.Operation, 4, 4)
+      },
+      {
+        Title: 'Microsoft Surface Book 15"',
+        Date: '2020',
+        Cpu: 4.5,
+        Unit: (4.5 * (10 ** 6)),
+        Para: 8,
+        TimeOptimyze: this.GetDate(this.OperationOptim, 4.5, 8),
+        Time: this.GetDate(this.Operation, 4.5, 8)
+      },
+      {
+        Title: 'VPS',
+        Date: '2020',
+        Cpu: 2.4,
+        Unit: (2.4 * (10 ** 6)),
+        Para: 8,
+        TimeOptimyze: this.GetDate(this.OperationOptim, 2.4, 8),
+        Time: this.GetDate(this.Operation, 2.4, 8)
       },
       {
         Title: 'Web-Server',
         Date: '2017',
         Cpu: 3.5,
-        Unit: 3.5 * (10 ** 6),
+        Unit: (3.5 * (10 ** 6)),
         Para: 8,
         TimeOptimyze: this.GetDate(this.OperationOptim, 3.5, 8),
         Time: this.GetDate(this.Operation, 3.5, 8)
       },
       {
+        Title: 'Cluster',
+        Date: '2020',
+        Cpu: '2.4 * 3',
+        Unit: (2.4 * 3 * (10 ** 6)),
+        Para: 8,
+        TimeOptimyze: this.GetDate(this.OperationOptim, 2.4 * 3, 8),
+        Time: this.GetDate(this.Operation, 2.4 * 3, 8)
+      },
+      {
         Title: 'Tianhe-2',
         Date: '2013',
         Cpu: 1.3,
-        Unit: 1.3 * (10 ** 6),
+        Unit: (1.3 * (10 ** 6)),
         Para: 3120000,
         TimeOptimyze: this.GetDate(this.OperationOptim, 1.3, 3120000),
         Time: this.GetDate(this.Operation, 1.3, 3120000)
